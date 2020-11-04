@@ -4,7 +4,7 @@ from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm
-from app.models import User
+from app.models import User, Post
 from datetime import datetime
 
 @login_required
@@ -63,11 +63,7 @@ def register():
 @login_required
 def user(username):
     user = User.query.filter_by(username=username).first_or_404()
-    posts = [
-        {'author': user, 'body': 'Test post #1'},
-        {'author': user, 'body': 'Test post #2'}
-    ]
-    return render_template('user.html', user=user, posts=posts)
+    return render_template('user.html', user=user, posts=user.posts)
 
 @app.before_request
 def before_request():
@@ -89,3 +85,10 @@ def edit_profile():
         form.username.data = current_user.username
         form.username.data = current_user.about_me
     return render_template('edit_profile.html', title='Edit Profile', form=form)
+
+
+@app.route('/user/<int:uid>')
+def get_userinfo(uid):
+    user = User.query.get(uid)
+    print ('render with user_id = ', uid)
+    return render_template('my_template.html', user=user)
