@@ -92,3 +92,18 @@ def get_userinfo(uid):
     user = User.query.get(uid)
     print ('render with user_id = ', uid)
     return render_template('my_template.html', user=user)
+
+
+@app.route('/pie')
+def pie():
+    labels = ['Большая часть', 'что-то незначительное', 'меньшая часть']
+    values = [100, 15, 39]
+    colors = [ "#F7464A", "#46BFBD", "#ABCDEF" ]
+    return render_template('pie.html', title='Bitcoin Monthly Price in USD', max=17000, set=zip(values, labels, colors))
+
+@app.route('/bar')
+def bar():
+    labels = ['Большая часть', 'что-то незначительное']
+    values = [10000, 140000]
+    return render_template('bar.html', title='Bitcoin Monthly Price in USD', max=150000, labels=labels, values=values)
+

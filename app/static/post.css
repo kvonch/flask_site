@@ -1,3 +1,8 @@
+body {
+background: #c7b39b url(start_page.jpg) no-repeat;
+background-size: cover;
+}
+
 table {
 	border: 1px solid black;
 }
