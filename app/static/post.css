@@ -1,6 +1,10 @@
 body {
 background: #c7b39b url(start_page.jpg) no-repeat;
 background-size: cover;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 table {

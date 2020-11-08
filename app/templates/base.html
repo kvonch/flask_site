@@ -3,18 +3,18 @@
     {% if title %}
     <title>{{ title }} - webmssql</title>
     {% else %}
-    <title>Welcome to webmssql!</title>
+    <title>Добро пожаловать на сайт товарооборота сети магазинов!</title>
     {% endif %}
     </head>
     <body>
         <div>
-            webmssql:
-            <a href="{{ url_for('index') }}">Home</a>
+            Товарооборот:
+            <a href="{{ url_for('index') }}">На главную</a>
             {% if current_user.is_anonymous %}
-            <a href="{{ url_for('login') }}">Login</a>
+            <a href="{{ url_for('login') }}">Войти</a>
             {% else %}
-            <a href="{{ url_for('user', username=current_user.username) }}">Profile</a>
-            <a href="{{ url_for('logout') }}">Logout</a>
+            <a href="{{ url_for('user', username=current_user.username) }}">Профиль</a>
+            <a href="{{ url_for('logout') }}">Выйти</a>
             {% endif %}
         </div>
         <hr>
