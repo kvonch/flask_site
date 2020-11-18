@@ -45,3 +45,8 @@ class SumMntSale(db.Model):
     sum_mnt_weight_sale = db.Column(db.String(256))
     sum_mnt_piece_sale = db.Column(db.String(256))
 
+class DelivSaleShops(db.Model):
+    types_shops_name = db.Column(db.String(256), primary_key=True)
+    deliv_weight_sale = db.Column(db.Integer)
+    deliv_piece_sale = db.Column(db.Integer)
+

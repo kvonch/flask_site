@@ -10,9 +10,10 @@
    function drawChart() {
     var data = google.visualization.arrayToDataTable([
      ['Типы магазинов', 'кг', 'шт'],
-     ['магазин у дома', 58527, 12453 ],
-     ['супермаркет', 71997 , 22355 ],
-     ['гипермаркет', 130463 , 42269 ]
+  {% for deliv in deliv_sale_shops %}
+    ['{{ deliv.types_shops_name }}', {{ deliv.deliv_weight_sale }}, {{ deliv.deliv_piece_sale }}],
+  {% endfor %}
+
     ]);
     var options = {
      title: 'Выполнение продаж',
@@ -26,5 +27,6 @@
  </head>
  <body>
   <div id="oil" style="width: 800px; height: 500px;"></div>
+
  </body>
  </html>
