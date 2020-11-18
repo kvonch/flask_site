@@ -1,0 +1,18 @@
+INSERT INTO shops (shop_name,comment,is_active,type_shops_id) VALUES ('Магазин N1','на Черкасской',1,1);
+INSERT INTO shops (shop_name,comment,is_active,type_shops_id) VALUES ('Магазин N2','на Восточно-Кругликовской',1,1);
+INSERT INTO shops (shop_name,comment,is_active,type_shops_id) VALUES ('Магазин N3','на Артюшкова',1,1);
+INSERT INTO shops (shop_name,comment,is_active,type_shops_id) VALUES ('Магазин N4','на Российской',1,1);
+INSERT INTO shops (shop_name,comment,is_active,type_shops_id) VALUES ('Магазин N5','на Солнечной',1,1);
+INSERT INTO shops (shop_name,comment,is_active,type_shops_id) VALUES ('Магазин N6','на 1 Мая',1,1);
+INSERT INTO shops (shop_name,comment,is_active,type_shops_id) VALUES ('Магазин N7','на 40-летия Победы',1,1);
+INSERT INTO shops (shop_name,comment,is_active,type_shops_id) VALUES ('Магазин N8','на Московской',1,1);
+INSERT INTO shops (shop_name,comment,is_active,type_shops_id) VALUES ('Супермаркет N1','на Артюшкова',1,2);
+INSERT INTO shops (shop_name,comment,is_active,type_shops_id) VALUES ('Супермаркет N2','на Московской',1,2);
+INSERT INTO shops (shop_name,comment,is_active,type_shops_id) VALUES ('Супермаркет N3','на Восточно-Кругликовской',1,2);
+INSERT INTO shops (shop_name,comment,is_active,type_shops_id) VALUES ('Супермаркет N4','на Спортивной',1,2);
+INSERT INTO shops (shop_name,comment,is_active,type_shops_id) VALUES ('Супермаркет N5','на Солнечной',1,2);
+INSERT INTO shops (shop_name,comment,is_active,type_shops_id) VALUES ('Гипермаркет N1','на Московской',1,3);
+INSERT INTO shops (shop_name,comment,is_active,type_shops_id) VALUES ('Гипермаркет N2','на Тюляева',1,3);
+INSERT INTO shops (shop_name,comment,is_active,type_shops_id) VALUES ('Гипермаркет N3','на Октябрьской',1,3);
+INSERT INTO shops (shop_name,comment,is_active,type_shops_id) VALUES ('Гипермаркет N4','на 40-летия Победы',1,3);
+INSERT INTO shops (shop_name,comment,is_active,type_shops_id) VALUES ('Гипермаркет N5','на Дзержинского',1,3);

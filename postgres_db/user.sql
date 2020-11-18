@@ -5,7 +5,7 @@ CREATE SEQUENCE public.user_seq
 	START 1
 	CACHE 1
 	NO CYCLE;
-
+-- Пользователи
 CREATE TABLE public."user" (
 	id int4 NOT NULL DEFAULT nextval('user_seq'::regclass),
 	username varchar(64) NULL,

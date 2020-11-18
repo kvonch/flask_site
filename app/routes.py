@@ -15,10 +15,6 @@ def index():
         {
             'author': {'username': 'John'},
             'body': 'Beautiful day in Portland!'
-        },
-        {
-            'author': {'username': 'Susan'},
-            'body': 'The Avengers movie was so cool!'
         }
     ]
     return render_template('index.html', title='Home', posts=posts)
@@ -106,4 +102,3 @@ def bar():
     labels = ['Большая часть', 'что-то незначительное']
     values = [10000, 140000]
     return render_template('bar.html', title='Bitcoin Monthly Price in USD', max=150000, labels=labels, values=values)
-

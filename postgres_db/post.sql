@@ -5,7 +5,7 @@ CREATE SEQUENCE public.post_seq
 	START 1
 	CACHE 1
 	NO CYCLE;
-
+-- Информация о пользователе
 CREATE TABLE post (
 	id int4 NOT NULL DEFAULT nextval('post_seq'::regclass), 
 	body VARCHAR(140), 

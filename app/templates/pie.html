@@ -1,33 +1,31 @@
 <!DOCTYPE html>
-<head>
-  <meta charset="utf-8" />
-  <title>{{ title }}</title>
-  <script src='/static/Chart.js'></script>
-</head>
-
-<body>
-    <h1>{{ title }}</h1>
-
-    <canvas id="chart" width="600" height="400"></canvas>
-    <script>
-      var pieData = [
-        {% for item, label, colors in set %}
-          {
-            value: {{item}},
-            label: "{{label}}",
-            color : "{{colors}}"
-          },
-        {% endfor %}
-      ];
-
-      // get bar chart canvas
-      var mychart = document.getElementById("chart").getContext("2d");
-      steps = 10
-      max = {{ max }}
-
-      // draw pie chart
-      new Chart(document.getElementById("chart").getContext("2d")).Pie(pieData);
-
-    </script>
-</body>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Круговая диаграмма</title>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+   google.load("visualization", "1", {packages:["corechart"]});
+   google.setOnLoadCallback(drawChart);
+   function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+     ['Газ', 'Объём'],
+     ['Азот',     78.09],
+     ['Кислород', 20.95],
+     ['Аргон',    0.93],
+     ['Углекислый газ', 0.03]
+    ]);
+    var options = {
+     title: 'Состав воздуха',
+     is3D: true,
+     pieResidueSliceLabel: 'Остальное'
+    };
+    var chart = new google.visualization.PieChart(document.getElementById('air'));
+     chart.draw(data, options);
+   }
+  </script>
+ </head>
+ <body>
+  <div id="air" style="width: 500px; height: 400px;"></div>
+ </body>
 </html>

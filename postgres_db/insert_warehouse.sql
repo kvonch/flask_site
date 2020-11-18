@@ -1,0 +1,1 @@
+INSERT INTO warehouse (wr_name,comment,is_active) VALUES ('РЦ Краснодар','Распределительный Центр Краснодара',1);

@@ -1,59 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <title>{{ title }}</title>
-  <script src='/static/Chart.js'></script>
-</head>
-
-<body>
-  <center>
-    <h1>{{ title }}</h1>
-  </center>
-  <center>
-    <canvas id="chart" width="600" height="400"></canvas>
-    <script>
-      // bar chart data
-      var barData = {
-        labels : [
-          {% for item in labels %}
-           "{{ item }}",
-          {% endfor %}
-	],
-
-        datasets : [{
-          fillColor: "rgba(151,187,205,0.2)",
-          strokeColor: "rgba(151,187,205,1)",
-          pointColor: "rgba(151,187,205,1)",
-          data : [
-            {% for item in values %}
-               "{{ item }}",
-              {% endfor %}
-	    ]
-          }
-        ]
-      }
-
-     // get bar chart canvas
-     var mychart = document.getElementById("chart").getContext("2d");
-
-       steps = 10
-       max = {{max}}
-
-     // draw bar chart
-     new Chart(mychart).Bar(barData, {
-       scaleOverride: true,
-       scaleSteps: steps,
-       scaleStepWidth: Math.ceil(max / steps),
-       scaleStartValue: 0,
-       scaleShowVerticalLines: true,
-       scaleShowGridLines : true,
-       barShowStroke : true,
-       scaleShowLabels: true
-       }
-     );
-
-    </script>
-  </center>
-</body>
-</html>
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Гистограмма</title>
+  <script src="https://www.google.com/jsapi"></script>
+  <script>
+   google.load("visualization", "1", {packages:["corechart"]});
+   google.setOnLoadCallback(drawChart);
+   function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+     ['Год', 'Россия', 'США'],
+     ['1860', 130, 700],
+     ['1885', 2000, 3120],
+     ['1901', 12170, 9920]
+    ]);
+    var options = {
+     title: 'Добыча нефти',
+     hAxis: {title: 'Год'},
+     vAxis: {title: 'Тыс. тонн'}
+    };
+    var chart = new google.visualization.ColumnChart(document.getElementById('oil'));
+    chart.draw(data, options);
+   }
+  </script>
+ </head>
+ <body>
+  <div id="oil" style="width: 500px; height: 400px;"></div>
+ </body>
+ </html>
