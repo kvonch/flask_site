@@ -4,7 +4,7 @@ from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm
-from app.models import User, Post
+from app.models import User, Post, SumMntSale
 from datetime import datetime
 
 @login_required
@@ -17,7 +17,8 @@ def index():
             'body': 'Beautiful day in Portland!'
         }
     ]
-    return render_template('index.html', title='Home', posts=posts)
+    top_sales = get_top_sales()
+    return render_template('index.html', title='Home', posts=posts, top_sales = top_sales)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -102,3 +103,13 @@ def bar():
     labels = ['Большая часть', 'что-то незначительное']
     values = [10000, 140000]
     return render_template('bar.html', title='Bitcoin Monthly Price in USD', max=150000, labels=labels, values=values)
+
+
+@app.route('/top_sales')
+@login_required
+def top_sales():
+    top_sales = get_top_sales()
+    return render_template('top_sales.html', title='Топ продаж по типам магазинов', top_sales = top_sales)
+
+def get_top_sales():
+    return SumMntSale.query.all()

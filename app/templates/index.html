@@ -8,7 +8,9 @@
         <h1>Текущие показатели</h1>
         {% for post in posts %}
         <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
-        <table border="1">
+            {% include 'top_sales.html' %}
+            {% include 'bar.html' %}
+<!--         <table border="1">
             <caption>Таблица размеров обуви</caption>
                 <tr>
                     <th>Россия</th>
@@ -37,7 +39,7 @@
                 <tr><td>46,5</td><td>12,5</td><td>48</td><td>30,5</td></tr>
                 <tr><td>47</td><td>13</td><td>48⅔</td><td>31</td></tr>
                 <tr><td>48</td><td>13,5</td><td>49⅓</td><td>31,5</td></tr>
-        </table>
+        </table> -->
         {% endfor %}
 {% endblock %}
     </body>

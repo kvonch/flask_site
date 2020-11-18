@@ -39,3 +39,9 @@ class Post(db.Model):
     def __repr__(self):
         return '<Post {}>'.format(self.body)
 
+class SumMntSale(db.Model):
+    types_shops_name = db.Column(db.String(256), primary_key=True)
+    sale_date = db.Column(db.String(10), primary_key=True)
+    sum_mnt_weight_sale = db.Column(db.String(256))
+    sum_mnt_piece_sale = db.Column(db.String(256))
+

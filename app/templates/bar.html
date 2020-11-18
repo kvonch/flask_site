@@ -9,15 +9,15 @@
    google.setOnLoadCallback(drawChart);
    function drawChart() {
     var data = google.visualization.arrayToDataTable([
-     ['Год', 'Россия', 'США'],
-     ['1860', 130, 700],
-     ['1885', 2000, 3120],
-     ['1901', 12170, 9920]
+     ['Типы магазинов', 'кг', 'шт'],
+     ['магазин у дома', 58527, 12453 ],
+     ['супермаркет', 71997 , 22355 ],
+     ['гипермаркет', 130463 , 42269 ]
     ]);
     var options = {
-     title: 'Добыча нефти',
-     hAxis: {title: 'Год'},
-     vAxis: {title: 'Тыс. тонн'}
+     title: 'Выполнение продаж',
+     hAxis: {title: 'Типы магазинов'},
+     vAxis: {title: 'Количество'}
     };
     var chart = new google.visualization.ColumnChart(document.getElementById('oil'));
     chart.draw(data, options);
@@ -25,6 +25,6 @@
   </script>
  </head>
  <body>
-  <div id="oil" style="width: 500px; height: 400px;"></div>
+  <div id="oil" style="width: 800px; height: 500px;"></div>
  </body>
  </html>
