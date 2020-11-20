@@ -4,7 +4,7 @@ from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm
-from app.models import User, Post, SumMntSale, DelivSaleShops
+from app.models import User, Post, SumMntSale, DiffMntSale
 from datetime import datetime
 
 @login_required
@@ -18,9 +18,9 @@ def index():
         }
     ]
     top_sales = get_top_sales()
-    deliv_sale_shops = get_deliv_sale_shops()
-    print (deliv_sale_shops)
-    return render_template('index.html', title='Home', posts=posts, top_sales = top_sales, deliv_sale_shops = deliv_sale_shops)
+    diff_mnt_sale = get_diff_mnt_sale()
+    print (diff_mnt_sale)
+    return render_template('index.html', title='Home', posts=posts, top_sales = top_sales, diff_mnt_sale = diff_mnt_sale)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -116,11 +116,11 @@ def top_sales():
 def get_top_sales():
     return SumMntSale.query.all()
 
-@app.route('/deliv_sale_shops')
+@app.route('/diff_mnt_sale')
 @login_required
-def deliv_sale_shops():
-    deliv_sale_shops = get_deliv_sale_shops()
-    return render_template('bar.html', title='Выполнение продаж', top_sales = top_sales)
+def diff_mnt_sale():
+    diff_mnt_sale = get_diff_mnt_sale()
+    return render_template('bar.html', title='Выполнение продаж', diff_mnt_sale = diff_mnt_sale)
 
-def get_deliv_sale_shops():
-    return DelivSaleShops.query.all()
+def get_diff_mnt_sale():
+    return DiffMntSale.query.all()

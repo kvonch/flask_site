@@ -9,9 +9,9 @@
    google.setOnLoadCallback(drawChart);
    function drawChart() {
     var data = google.visualization.arrayToDataTable([
-     ['Типы магазинов', 'кг', 'шт'],
-  {% for deliv in deliv_sale_shops %}
-    ['{{ deliv.types_shops_name }}', {{ deliv.deliv_weight_sale }}, {{ deliv.deliv_piece_sale }}],
+     ['Типы магазинов', 'кг (max за 3 месяца)', 'шт (max за 3 месяца)', 'кг (на последний месяц)', 'шт (на последний месяц)'],
+  {% for deliv in diff_mnt_sale %}
+    ['{{ deliv.types_shops_name }}', {{ deliv.sum_mnt_weight_sale }}, {{ deliv.sum_mnt_piece_sale }}, {{ deliv.sum_current_weight_sales }}, {{ deliv.sum_current_piece_sales }}],
   {% endfor %}
 
     ]);

@@ -2,8 +2,8 @@
 select
 types_shops types_shops_name, -- наименование типв магазина
 to_char(sale_date, 'MM.YYYY') sale_date, -- месяц продаж
-floor(sum_mnt_weight_sale) sum_mnt_weight_sale, -- проданный весовой товар
-floor(sum_mnt_piece_sale) sum_mnt_piece_sale -- проданный штучный товар
+floor(sum_mnt_weight_sale) || ' кг. весового товара' sum_mnt_weight_sale, -- проданный весовой товар
+floor(sum_mnt_piece_sale) || ' единиц штучного товара' sum_mnt_piece_sale -- проданный штучный товар
 from
 (
 SELECT 
@@ -64,5 +64,7 @@ group by
 stc.types_shops_id,
 date_trunc('month', swg.date_create)
 ) a1
-where a1.max_sum_mnt_all_sale = a1.sum_mnt_all_sale
-order by a1.sum_mnt_weight_sale;
+where a1.max_sum_mnt_all_sale = a1.sum_mnt_all_sale;
+
+
+select * from sum_mnt_sale
