@@ -52,3 +52,17 @@ class DiffMntSale(db.Model):
     sum_current_weight_sales = db.Column(db.Integer)
     sum_current_piece_sales = db.Column(db.Integer)
 
+class MaxOverShopsCapacity(db.Model):
+    types_shops_name = db.Column(db.String(256), primary_key=True)
+    types_goods_name = db.Column(db.String(256), primary_key=True)
+    max_over_weight_capacity = db.Column(db.Integer)
+    max_over_piece_capacity = db.Column(db.Integer)
+
+class CrntOverShopsCapacity(db.Model):
+    types_shops_name = db.Column(db.String(256), primary_key=True)
+    types_goods_name = db.Column(db.String(256), primary_key=True)
+    max_over_weight_capacity = db.Column(db.Integer)
+    max_over_piece_capacity = db.Column(db.Integer)
+    current_over_weight_capacity = db.Column(db.Integer)
+    current_over_piece_capacity = db.Column(db.Integer)
+

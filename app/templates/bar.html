@@ -3,7 +3,7 @@
  <head>
   <meta charset="utf-8">
   <title>Гистограмма</title>
-  <script src="https://www.google.com/jsapi"></script>
+  <script src="static/loader.js"></script>
   <script>
    google.load("visualization", "1", {packages:["corechart"]});
    google.setOnLoadCallback(drawChart);
@@ -12,6 +12,7 @@
      ['Типы магазинов', 'кг (max за 3 месяца)', 'шт (max за 3 месяца)', 'кг (на последний месяц)', 'шт (на последний месяц)'],
   {% for deliv in diff_mnt_sale %}
     ['{{ deliv.types_shops_name }}', {{ deliv.sum_mnt_weight_sale }}, {{ deliv.sum_mnt_piece_sale }}, {{ deliv.sum_current_weight_sales }}, {{ deliv.sum_current_piece_sales }}],
+
   {% endfor %}
 
     ]);
@@ -22,11 +23,36 @@
     };
     var chart = new google.visualization.ColumnChart(document.getElementById('oil'));
     chart.draw(data, options);
+
+
+   var dataShops = google.visualization.arrayToDataTable([
+     ['Типы магазинов', 'кг (max за 3 месяца)', 'шт (max за 3 месяца)', 'кг (на последний месяц)', 'шт (на последний месяц)'],
+  {% for deliv in diff_mnt_sale %}
+    ['{{ deliv.types_shops_name }}', {{ deliv.sum_mnt_weight_sale }}, {{ deliv.sum_mnt_piece_sale }}, {{ deliv.sum_current_weight_sales }}, {{ deliv.sum_current_piece_sales }}],
+
+  {% endfor %}
+
+    ]);
+    var options1 = {
+     title: 'Выполнение продаж',
+     hAxis: {title: 'Типы магазинов'},
+     vAxis: {title: 'Количество'}
+    };
+    var chart1 = new google.visualization.ColumnChart(document.getElementById('oil1'));
+    chart1.draw(dataShops, options1);
    }
   </script>
+  
  </head>
- <body>
-  <div id="oil" style="width: 800px; height: 500px;"></div>
-
+ <body>     
+  <table border="1" width="100%" cellpadding="5">
+   <tr width="50%">
+    <td>
+ <div id="oil" style="width: 800px; height: 500px;"></div>
+    </td>
+    <td width="50%">
+ <div id="oil1" style="width: 800px; height: 500px;"></div>
+   </tr>
+ </table>
  </body>
  </html>

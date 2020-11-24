@@ -71,6 +71,7 @@ and g.type_goods_id  = stc.types_goods_id
 and swg.shop_id = s.id 
 and s.type_shops_id  = stc.types_shops_id 
 and swg.unit_id = stc.units_id
+and (date_trunc('month', swg.date_create) between date_trunc('month', current_date - INTERVAL '3  month') and (date_trunc('month', current_date) - INTERVAL '1  day'))
 group by 
 stc.types_shops_id,
 date_trunc('month', swg.date_create)
@@ -105,7 +106,7 @@ and g.type_goods_id  = stc.types_goods_id
 and swg.shop_id = s.id 
 and s.type_shops_id  = stc.types_shops_id 
 and swg.unit_id = stc.units_id
-and date_trunc('month', swg.date_create) = to_date('2020-10-01 00:00:00','YYYY-MM-DD')
+and date_trunc('month', swg.date_create) = date_trunc('month', current_date - INTERVAL '1  month')
 group by 
 stc.types_shops_id,
 date_trunc('month', swg.date_create)

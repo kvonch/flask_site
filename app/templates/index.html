@@ -4,12 +4,15 @@
     </head>
     <body>
     {% block content %}
-        <h2>Привет, {{ current_user.username }}!</h2>
-        <h1>Текущие показатели</h1>
+        <h2>Добро пожаловать на сайт товарооборота сети магазинов! Войдите или зарегистрируетесь.</h2>
+        <h2>Для регистрации обратитесь к администратору сайта.</h2>
         {% for post in posts %}
-        <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
+        {% if current_user.is_anonymous %}
+            <a href="{{ url_for('login') }}">Войти</a>
+            {% else %}
             {% include 'top_sales.html' %}
             {% include 'bar.html' %}
+        {% endif %}
 <!--         <table border="1">
             <caption>Таблица размеров обуви</caption>
                 <tr>

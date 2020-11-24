@@ -4,7 +4,7 @@ from flask_login import login_user, logout_user, current_user, login_required
 from werkzeug.urls import url_parse
 from app import app, db
 from app.forms import LoginForm, RegistrationForm, EditProfileForm
-from app.models import User, Post, SumMntSale, DiffMntSale
+from app.models import User, Post, SumMntSale, DiffMntSale, MaxOverShopsCapacity, CrntOverShopsCapacity
 from datetime import datetime
 
 @login_required
@@ -19,8 +19,10 @@ def index():
     ]
     top_sales = get_top_sales()
     diff_mnt_sale = get_diff_mnt_sale()
+    crnt_over_shops_capacity = get_crnt_over_shops_capacity()
+    max_over_shops_capacity = get_max_over_shops_capacity()
     print (diff_mnt_sale)
-    return render_template('index.html', title='Home', posts=posts, top_sales = top_sales, diff_mnt_sale = diff_mnt_sale)
+    return render_template('index.html', title='Home', posts=posts, top_sales = top_sales, diff_mnt_sale = diff_mnt_sale, max_over_shops_capacity = max_over_shops_capacity, crnt_over_shops_capacity = crnt_over_shops_capacity)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -124,3 +126,21 @@ def diff_mnt_sale():
 
 def get_diff_mnt_sale():
     return DiffMntSale.query.all()
+
+@app.route('/crnt_over_shops_capacity')
+@login_required
+def crnt_over_shops_capacity():
+    crnt_over_shops_capacity = get_crnt_over_shops_capacity()
+    return render_template('bar.html', title='Выполнение продаж', crnt_over_shops_capacity = crnt_over_shops_capacity)
+
+def get_crnt_over_shops_capacity():
+    return CrntOverShopsCapacity.query.all()    
+
+@app.route('/max_over_shops_capacity')
+@login_required
+def max_over_shops_capacity():
+    max_over_shops_capacity = get_max_over_shops_capacity()
+    return render_template('max_over_shops_capacity.html', title='Выполнение продаж', diff_mnt_sale = diff_mnt_sale)
+
+def get_max_over_shops_capacity():
+    return MaxOverShopsCapacity.query.all()
